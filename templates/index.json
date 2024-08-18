@@ -1,1 +1,142 @@
-{"sections":{"image_banner":{"type":"image-banner","blocks":{"button":{"type":"buttons","settings":{"button_label_1":"Shop all","button_link_1":"shopify:\/\/collections\/all","button_style_secondary_1":true,"button_label_2":"","button_link_2":"","button_style_secondary_2":false}}},"block_order":["button"],"settings":{"image":"shopify:\/\/shop_images\/style_kurti_banner.webp","image_overlay_opacity":0,"image_height":"adapt","desktop_content_position":"bottom-right","show_text_box":false,"desktop_content_alignment":"center","color_scheme":"scheme-2","image_behavior":"none","mobile_content_alignment":"center","stack_images_on_mobile":false,"show_text_below":false}},"featured_collection":{"type":"featured-collection","settings":{"title":"Featured products","heading_size":"h2","description":"","show_description":false,"description_style":"body","collection":"all","products_to_show":8,"columns_desktop":4,"full_width":false,"show_view_all":true,"view_all_style":"solid","enable_desktop_slider":false,"color_scheme":"scheme-1","image_ratio":"portrait","image_shape":"default","show_secondary_image":false,"show_vendor":false,"show_rating":false,"quick_add":"none","columns_mobile":"2","swipe_on_mobile":false,"padding_top":44,"padding_bottom":36}},"image_banner_kE7Gwp":{"type":"image-banner","settings":{"image":"shopify:\/\/shop_images\/4b332a8bba7fa810a54ac4b82344b9e2.jpg","image_overlay_opacity":0,"image_height":"adapt","desktop_content_position":"middle-center","show_text_box":false,"desktop_content_alignment":"center","color_scheme":"","image_behavior":"none","mobile_content_alignment":"center","stack_images_on_mobile":false,"show_text_below":false}},"image_with_text_ayTMTE":{"type":"image-with-text","blocks":{"heading_KyHNTw":{"type":"heading","settings":{"heading":"Welcome to RESHAM ETHNIC- Tradition MeetsContemporary Elegance!","heading_size":"h2"}},"text_WUXkXn":{"type":"text","settings":{"text":"<p>At RESHAM ETHNIC, we celebrate the beauty and diversity of Indian ethnic wear, blending traditional craftsmanship with contemporary designs to bring you garments that are as timeless as they are modern. From the vibrant streets of Mumbai to the serene landscapes of Kerala, our collections are inspired by the rich tapestry of Indian culture and fashion.<\/p>","text_style":"body"}},"button_haE7qX":{"type":"button","settings":{"button_label":"Read More","button_link":"shopify:\/\/pages\/about-us","button_style_secondary":false}}},"block_order":["heading_KyHNTw","text_WUXkXn","button_haE7qX"],"settings":{"image":"shopify:\/\/shop_images\/image.png","height":"adapt","desktop_image_width":"medium","layout":"image_first","desktop_content_position":"middle","desktop_content_alignment":"left","content_layout":"no-overlap","section_color_scheme":"","color_scheme":"","image_behavior":"none","mobile_content_alignment":"left","padding_top":36,"padding_bottom":36}}},"order":["image_banner","featured_collection","image_banner_kE7Gwp","image_with_text_ayTMTE"]}
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop allq",
+            "button_link_1": "shopify:\/\/collections\/all",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "button"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/style_kurti_banner.webp",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "desktop_content_position": "bottom-right",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-2",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured products",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "all",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "scheme-1",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "image_banner_kE7Gwp": {
+      "type": "image-banner",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/4b332a8bba7fa810a54ac4b82344b9e2.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "image_with_text_ayTMTE": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_KyHNTw": {
+          "type": "heading",
+          "settings": {
+            "heading": "Welcome to RESHAM ETHNIC- Tradition MeetsContemporary Elegance!",
+            "heading_size": "h2"
+          }
+        },
+        "text_WUXkXn": {
+          "type": "text",
+          "settings": {
+            "text": "<p>At RESHAM ETHNIC, we celebrate the beauty and diversity of Indian ethnic wear, blending traditional craftsmanship with contemporary designs to bring you garments that are as timeless as they are modern. From the vibrant streets of Mumbai to the serene landscapes of Kerala, our collections are inspired by the rich tapestry of Indian culture and fashion.<\/p>",
+            "text_style": "body"
+          }
+        },
+        "button_haE7qX": {
+          "type": "button",
+          "settings": {
+            "button_label": "Read More",
+            "button_link": "shopify:\/\/pages\/about-us",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_KyHNTw",
+        "text_WUXkXn",
+        "button_haE7qX"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/image.png",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "image_banner",
+    "featured_collection",
+    "image_banner_kE7Gwp",
+    "image_with_text_ayTMTE"
+  ]
+}
