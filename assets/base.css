@@ -3455,5 +3455,5 @@ details-disclosure > details {
   }
 }
 body span.header__active-menu-item {
-  color: #f00;
+  color: yellow;
 }
