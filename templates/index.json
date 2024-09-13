@@ -9,6 +9,20 @@
 */
 {
   "sections": {
+    "videos_gapAbR": {
+      "type": "videos",
+      "settings": {
+        "heading": "Video",
+        "full_width": true,
+        "autoplay": false,
+        "video": "shopify:\/\/files\/videos\/hyper-HJ3004-qi2-4-in-1-4-devices-animation-v01-r01-1360x600.mp4",
+        "mvideo": "shopify:\/\/shop_images\/cccc.jpg",
+        "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "video_bg": "#fff"
+      }
+    },
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -134,6 +148,7 @@
     }
   },
   "order": [
+    "videos_gapAbR",
     "image_banner",
     "featured_collection",
     "image_banner_kE7Gwp",
