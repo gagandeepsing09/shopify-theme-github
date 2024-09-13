@@ -54,8 +54,8 @@
       
 
           {% elsif section.settings.mvideo != blank  %}
-{{ section.settings.mvideo | img_url : '1900x' }}
-{{ section.settings.video | video_tag: id: "my-video", controls: false, autoplay: false, loop: true, poster: section.settings.mvideo | img_url : '1900x' }}
+{% assign aaa = section.settings.mvideo | img_url : '1900x' %}
+{{ section.settings.video | video_tag: id: "my-video", controls: false, autoplay: false, loop: true, poster: aaa }}
           <button id="play-button" class="" style="
     border: 0px solid;
     background: transparent;
