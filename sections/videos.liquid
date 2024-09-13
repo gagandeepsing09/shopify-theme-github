@@ -55,7 +55,7 @@
 
           {% elsif section.settings.mvideo != blank  %}
 
-{{ section.settings.video | video_tag: id: "my-video", controls: false, autoplay: false, loop: true, poster: section.settings.mvideo | image_url : width : '1900' }}
+{{ section.settings.video | video_tag: id: "my-video", controls: false, autoplay: false, loop: true, poster: section.settings.mvideo | img_url : '1900x' }}
           <button id="play-button" class="" style="
     border: 0px solid;
     background: transparent;
