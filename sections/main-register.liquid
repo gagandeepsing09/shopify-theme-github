@@ -180,62 +180,70 @@
 
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.getElementById('create_customer');
-  
-  form.addEventListener('submit', function(event) {
-    event.preventDefault();
-    
-    const formData = new FormData(form);
-    const customTestValue = formData.get('custom_test');
-//console.log(formData);
-    fetch('/account', {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Failed to create account');
-      }
-      return response.json();
-    })
+document.getElementById("register-form").addEventListener("submit", async function (event) {
+  event.preventDefault();
 
-    .then(data => {
+  const firstName = document.getElementById("first_name").value;
+  const lastName = document.getElementById("last_name").value;
+  const email = document.getElementById("email").value;
+  const mobile = document.getElementById("mce-CELLPHONE").value;
+  const preferredStore = document.getElementById("mce-MMERGE12").value;
+  const referralSource = document.getElementById("mce-AWARENESS").value;
 
-      if (data.customer) {
-        const customerId = data.customer.id;
-        return fetch(`/admin/api/2024-04/customers/${customerId}/metafields.json`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-              'Authorization': 'Basic ' + btoa('915feedb7bab01d127308dcba42c36fa:4d15c92229ab62ac15344533340ba1cb')
-          },
-          body: JSON.stringify({
-            metafield: {
-              namespace: 'custom',
-              key: 'test',
-              value: customTestValue,
-              type: 'string'
-            }
-          })
-        });
-      } else {
-        throw new Error('Customer creation failed');
-      }
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Failed to save custom field');
-      }
-      window.location.href = '/account';
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      console.log(formData);
-      alert('An error occurred. Please try again.');
+  document.getElementById("status-message").textContent = "Registering user...";
+
+  try {
+    // **1. Register Customer in Shopify**
+    const shopifyResponse = await fetch("/account", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        customer: {
+          first_name: firstName,
+          last_name: lastName,
+          email: email,
+          phone: mobile,
+          note: `Preferred Store: ${preferredStore}, Referral: ${referralSource}`,
+        },
+      }),
     });
-  });
+
+    if (!shopifyResponse.ok) throw new Error("Shopify registration failed");
+
+    // **2. Send Data to Mailchimp**
+    const mailchimpApiKey = "YOUR_MAILCHIMP_API_KEY";
+    const mailchimpListId = "YOUR_LIST_ID";
+    const mailchimpData = {
+      email_address: email,
+      status: "subscribed",
+      merge_fields: {
+        FNAME: firstName,
+        LNAME: lastName,
+        CELLPHONE: mobile,
+        MMERGE12: preferredStore,
+        AWARENESS: referralSource,
+      },
+    };
+
+    const mailchimpResponse = await fetch(`https://usX.api.mailchimp.com/3.0/lists/${mailchimpListId}/members/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Basic ${btoa("anystring:" + mailchimpApiKey)}`, // Basic Auth
+      },
+      body: JSON.stringify(mailchimpData),
+    });
+
+    if (!mailchimpResponse.ok) throw new Error("Mailchimp API failed");
+
+    document.getElementById("status-message").textContent = "Registration successful!";
+
+  } catch (error) {
+    console.error(error);
+    document.getElementById("status-message").textContent = "Error: " + error.message;
+  }
 });
+
 </script>
 
 
