@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Please fill in all required fields.");
             return;
         }
-
+console.log("Name", firstName, lastName, email, phone, preferredStore, awareness);
         // Mailchimp API details
         const mailchimpAudienceId = "ea1832074b"; // Your Audience ID
         const mailchimpApiKey = "4bc84cfbdcdc4fb2dd409ca29aa92a31-us15"; // Never expose API keys in frontend JS
