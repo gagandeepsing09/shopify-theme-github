@@ -210,7 +210,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Mailchimp API Endpoint
         const url = `https://${mailchimpDataCenter}.api.mailchimp.com/3.0/lists/${mailchimpAudienceId}/members/`;
-
+      console.log("url", url);
+alert("hello;");
         // Prepare payload for Mailchimp
         const mailchimpData = {
             email_address: email,
