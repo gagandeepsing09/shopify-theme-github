@@ -105,8 +105,13 @@ document.addEventListener("DOMContentLoaded", function () {
             let email = document.querySelector("input[name='customer[email]']").value;
             let firstName = document.querySelector("input[name='customer[first_name]']").value;
             let lastName = document.querySelector("input[name='customer[last_name]']").value;
-
+          
+            const storePreference = document.getElementById("store_preference").value;
+            const awareness = document.getElementById("awareness").value;
+          
             // Auto-Fill Mailchimp Form
+            document.getElementById("mce-MMERGE12").value = storePreference;
+            document.getElementById("mce-AWARENESS").value = awareness;
             document.querySelector("#mce-EMAIL").value = email;
             document.querySelector("#mce-FNAME").value = firstName;
             document.querySelector("#mce-LNAME").value = lastName;
