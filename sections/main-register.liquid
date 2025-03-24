@@ -1,292 +1,123 @@
-{{ 'customer.css' | asset_url | stylesheet_tag }}
+<div id="template">
+  <div id="customer">
+	  <!-- Create Customer -->
+	  <div id="create-customer">
+	    <div class="template_header">
+	      <h2 class="title">{{ 'customer.register.title' | t }}</h2>
+	    </div>
 
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
+	    {% form 'create_customer' %}
+	      {{ form.errors | default_errors }}
 
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-  }
-{%- endstyle -%}
+	      <div class="clearfix large_form custom__login-form">
+            <label class="custom__login-labels" style="display: block !important;">First Name</label>
+	        {% comment %}<label for="first_name" class="login">{{ 'customer.register.first_name' | t }}</label>{% endcomment %}
+	        <input type="text" value="" name="customer[first_name]" id="first_name" class="large custom__login-input" size="30" />
+	      </div>
 
-<div class="customer register section-{{ section.id }}-padding">
-  <svg style="display: none">
-    <symbol id="icon-error" viewBox="0 0 13 13">
-      <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
-      <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
-      <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
-      <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
-    </symbol>
-  </svg>
-  <h1>
-    {{ 'customer.register.title' | t }}
-  </h1>
-  {%- form 'create_customer', novalidate: 'novalidate' -%}
-    {%- if form.errors -%}
-      <h2 class="form__message" tabindex="-1" autofocus>
-        <svg aria-hidden="true" focusable="false">
-          <use href="#icon-error" />
-        </svg>
-        {{ 'templates.contact.form.error_heading' | t }}
-      </h2>
-      <ul>
-        {%- for field in form.errors -%}
-          <li>
-            {%- if field == 'form' -%}
-              {{ form.errors.messages[field] }}
-            {%- else -%}
-              <a href="#RegisterForm-{{ field }}">
-                {{ form.errors.translated_fields[field] | capitalize }}
-                {{ form.errors.messages[field] }}
-              </a>
-            {%- endif -%}
-          </li>
-        {%- endfor -%}
-      </ul>
-    {%- endif -%}
-    <div class="field">
-      <input
-        type="text"
-        name="customer[first_name]"
-        id="RegisterForm-FirstName"
-        {% if form.first_name %}
-          value="{{ form.first_name }}"
-        {% endif %}
-        autocomplete="given-name"
-        placeholder="{{ 'customer.register.first_name' | t }}"
-      >
-      <label for="RegisterForm-FirstName">
-        {{ 'customer.register.first_name' | t }}
-      </label>
+	      <div class="clearfix large_form custom__login-form">
+            <label class="custom__login-labels" style="display: block !important;">Last Name</label>
+	        <label for="last_name" class="login">{{ 'customer.register.last_name' | t }}</label>
+	        <input type="text" value="" name="customer[last_name]" id="last_name" class="large custom__login-input" size="30" />
+	      </div>
+
+	      <div class="clearfix large_form custom__login-form">
+            <label class="custom__login-labels" style="display: block !important;">Email</label>
+	        <label for="email" class="login">{{ 'customer.register.email' | t }}</label>
+	        <input type="email" value="" name="customer[email]" id="email" class="large custom__login-input" size="30" />
+	      </div>
+
+	      <div class="clearfix large_form custom__login-form">
+            <label class="custom__login-labels" style="display: block !important;">Password</label>
+	        <label for="password" class="login">{{ 'customer.register.password' | t }}</label>
+	        <input type="password" value="" name="customer[password]" id="password" class="large password custom__login-input" size="30" />
+	      </div>
+ <div class="clearfix large_form custom__login-form">
+        <label class="custom__login-labels">Mobile Phone</label>
+        <input type="text" name="customer[phone]" id="phone" class="large custom__login-input" />
     </div>
-    <div class="field">
-      <input
-        type="text"
-        name="customer[last_name]"
-        id="RegisterForm-LastName"
-        {% if form.last_name %}
-          value="{{ form.last_name }}"
-        {% endif %}
-        autocomplete="family-name"
-        placeholder="{{ 'customer.register.last_name' | t }}"
-      >
-      <label for="RegisterForm-LastName">
-        {{ 'customer.register.last_name' | t }}
-      </label>
+
+    <div class="clearfix large_form custom__login-form">
+        <label class="custom__login-labels">Your Preferred Store</label>
+        <select name="customer[store_preference]" id="store_preference">
+            <option value="San Francisco, CA">San Francisco, CA</option>
+            <option value="Culver City, CA">Culver City, CA</option>
+            <option value="Denver, CO">Denver, CO</option>
+            <option value="San Jose, CA">San Jose, CA</option>
+            <option value="Seattle, WA">Seattle, WA</option>
+            <option value="No preference">No preference</option>
+        </select>
     </div>
-    <div class="input-row">
-  <label for="custom_test">Custom Test</label>
-  <input type="text" name="custom_test" id="custom_test">
-</div>
- <div class="mc-field-group">
-    <label for="CELLPHONE">Mobile Phone</label>
-    <input type="text" name="CELLPHONE" id="CELLPHONE" required>
+
+    <div class="clearfix large_form custom__login-form">
+        <label class="custom__login-labels">How did you hear about us?</label>
+        <select name="customer[awareness]" id="awareness">
+            <option value="In store">In store</option>
+            <option value="Friends or family">Friends or family</option>
+            <option value="Event">Event</option>
+            <option value="Social Media">Social Media</option>
+            <option value="Google">Google</option>
+            <option value="Media">Media</option>
+            <option value="Print advertising">Print advertising</option>
+            <option value="Email">Email</option>
+            <option value="Other">Other</option>
+        </select>
+    </div>
+	      <div class="action_bottom">
+	        <input class="btn" type="submit" value="{{ 'customer.register.submit' | t }}" />
+	        <span class="note">or <a href="{{ shop.url }}">{{ 'customer.register.cancel' | t }}</a></span>
+	      </div>
+          
+	    {% endform %}
+	  </div><!-- /#create-customer -->
   </div>
-
-  <div class="mc-field-group">
-    <label for="MMERGE12">Your Preferred Store</label>
-    <select name="MMERGE12" id="MMERGE12" required>
-      <option value=""></option>
-      <option value="San Francisco, CA">San Francisco, CA</option>
-      <option value="Culver City, CA">Culver City, CA</option>
-      <option value="Denver, CO (coming soon)">Denver, CO (coming soon)</option>
-      <option value="San Jose, CA (coming soon)">San Jose, CA (coming soon)</option>
-      <option value="Seattle, WA (coming soon)">Seattle, WA (coming soon)</option>
-      <option value="No preference">No preference</option>
-    </select>
-  </div>
-
-  <div class="mc-field-group">
-    <label for="mce-AWARENESS">How did you hear about us?</label>
-    <select name="AWARENESS" id="mce-AWARENESS" required>
-      <option value=""></option>
-      <option value="In store">In store</option>
-      <option value="Friends or family">Friends or family</option>
-      <option value="Event">Event</option>
-      <option value="Social Media">Social Media</option>
-      <option value="Google">Google</option>
-      <option value="Media">Media</option>
-      <option value="Print advertising">Print advertising</option>
-      <option value="Email">Email</option>
-      <option value="Other">Other</option>
-    </select>
-  </div>
-    <div class="field">
-      <input
-        type="email"
-        name="customer[email]"
-        id="RegisterForm-email"
-        {% if form.email %}
-          value="{{ form.email }}"
-        {% endif %}
-        spellcheck="false"
-        autocapitalize="off"
-        autocomplete="email"
-        aria-required="true"
-        {% if form.errors contains 'email' %}
-          aria-invalid="true"
-          aria-describedby="RegisterForm-email-error"
-        {% endif %}
-        placeholder="{{ 'customer.register.email' | t }}"
-      >
-      <label for="RegisterForm-email">
-        {{ 'customer.register.email' | t }}
-      </label>
-    </div>
-    {%- if form.errors contains 'email' -%}
-      <span id="RegisterForm-email-error" class="form__message">
-        <svg aria-hidden="true" focusable="false">
-          <use href="#icon-error" />
-        </svg>
-        {{ form.errors.translated_fields.email | capitalize }}
-        {{ form.errors.messages.email }}.
-      </span>
-    {%- endif -%}
-    <div class="field">
-      <input
-        type="password"
-        name="customer[password]"
-        id="RegisterForm-password"
-        aria-required="true"
-        {% if form.errors contains 'password' %}
-          aria-invalid="true"
-          aria-describedby="RegisterForm-password-error"
-        {% endif %}
-        placeholder="{{ 'customer.register.password' | t }}"
-      >
-      <label for="RegisterForm-password">
-        {{ 'customer.register.password' | t }}
-      </label>
-    </div>
-    {%- if form.errors contains 'password' -%}
-      <span id="RegisterForm-password-error" class="form__message">
-        <svg aria-hidden="true" focusable="false">
-          <use href="#icon-error" />
-        </svg>
-        {{ form.errors.translated_fields.password | capitalize }}
-        {{ form.errors.messages.password }}.
-      </span>
-    {%- endif -%}
-    <button>
-      {{ 'customer.register.submit' | t }}
-    </button>
-  {%- endform -%}
 </div>
 
 
 <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const shopifyForm = document.querySelector('form[action="/account"]'); // Shopify registration form
+    if (shopifyForm) {
+        shopifyForm.addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
 
-document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById('create_customer');
+            const formData = new FormData(shopifyForm);
 
-    form.addEventListener("submit", function (event) {
-        event.preventDefault(); // Prevent Shopify form submission initially
+            fetch('/account', { // Submit Shopify form
+                method: "POST",
+                body: formData
+            }).then(response => {
+                if (response.ok) {
+                    // Extract necessary data for Mailchimp form
+                    const email = document.getElementById("email").value;
+                    const firstName = document.getElementById("first_name").value;
+                    const lastName = document.getElementById("last_name").value;
+                    const phone = document.getElementById("phone").value || "";
+                    const storePreference = document.getElementById("store_preference").value || "";
+                    const awareness = document.getElementById("awareness").value || "";
 
-        const formData = new FormData(form);
+                    // Create a form object for Mailchimp submission
+                    const mailchimpData = new FormData();
+                    mailchimpData.append("EMAIL", email);
+                    mailchimpData.append("FNAME", firstName);
+                    mailchimpData.append("LNAME", lastName);
+                    mailchimpData.append("CELLPHONE", phone);
+                    mailchimpData.append("MMERGE12", storePreference);
+                    mailchimpData.append("AWARENESS", awareness);
 
-        // Extract user input values
-        const firstName = formData.get("customer[first_name]");
-        const lastName = formData.get("customer[last_name]");
-        const email = formData.get("customer[email]");
-        const phone = formData.get("CELLPHONE");
-        const preferredStore = formData.get("MMERGE12");
-        const awareness = formData.get("AWARENESS");
-
-        // Validate required fields (optional but recommended)
-        if (!email || !firstName || !lastName) {
-            alert("Please fill in all required fields.");
-            return;
-        }
-console.log("Name", firstName, lastName, email, phone, preferredStore, awareness);
-        // Mailchimp API details
-        const mailchimpAudienceId = "ea1832074b"; // Your Audience ID
-        const mailchimpApiKey = "4bc84cfbdcdc4fb2dd409ca29aa92a31-us15"; // Never expose API keys in frontend JS
-        const mailchimpDataCenter = "us15"; // Example: "us6" (Find in your Mailchimp API key)
-
-        // Mailchimp API Endpoint
-        const url = `https://${mailchimpDataCenter}.api.mailchimp.com/3.0/lists/${mailchimpAudienceId}/members/`;
-      console.log("url", url);
-alert("hello;");
-        // Prepare payload for Mailchimp
-        const mailchimpData = {
-            email_address: email,
-            status: "subscribed", // Use "pending" for double opt-in
-            merge_fields: {
-                FNAME: firstName,
-                LNAME: lastName,
-                CELLPHONE: phone,
-                MMERGE12: preferredStore,
-                AWARENESS: awareness,
-            },
-        };
-
-        // Submit data to Mailchimp
-        fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Basic ${btoa("anystring:" + mailchimpApiKey)}`,
-            },
-            body: JSON.stringify(mailchimpData),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                if (data.status === "subscribed" || data.title === "Member Exists") {
-                    console.log("Successfully added to Mailchimp");
-                    form.submit(); // Proceed with Shopify registration
+                    return fetch("https://aldeahome.us1.list-manage.com/subscribe/post?u=775d2b62c205b23c8c92138b8&id=fa9eee8080", {
+                        method: "POST",
+                        body: mailchimpData,
+                        mode: "no-cors" // Prevent CORS issues
+                    });
                 } else {
-                    console.error("Mailchimp Error:", data);
-                    alert("Error subscribing to Mailchimp: " + data.detail);
+                    alert("Registration failed. Please try again.");
                 }
-            })
-            .catch((error) => {
-                console.error("Fetch Error:", error);
-                alert("Something went wrong with Mailchimp integration.");
-            });
-    });
+            }).then(() => {
+                window.location.href = "/account"; // Redirect after submission
+            }).catch(error => console.error("Error:", error));
+        });
+    }
 });
 
-
-
-  
 </script>
-
-
-
-
-{% schema %}
-{
-  "name": "t:sections.main-register.name",
-  "settings": [
-    {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
-    }
-  ]
-}
-{% endschema %}
