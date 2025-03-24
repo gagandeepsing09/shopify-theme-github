@@ -107,13 +107,14 @@
             }).then(() => {
                 // After Mailchimp data is sent, submit the Shopify form
                 const formData = new FormData(shopifyForm);
-
+console.log("formData", formData);
                 return fetch('/account', {
                     method: "POST",
                     body: formData
                 });
             }).then(response => {
                 if (response.ok) {
+                  alert(response.ok);
                     window.location.href = "/account"; // Redirect after successful registration
                 } else {
                     alert("Registration failed. Please try again.");
