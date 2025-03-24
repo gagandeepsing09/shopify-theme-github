@@ -72,58 +72,55 @@
 	  </div><!-- /#create-customer -->
   </div>
 </div>
-
-
+<div id="mc_embed_shell">
+      <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
+  <style type="text/css">
+        #mc_embed_signup{background:#fff; false;clear:left; font:14px Helvetica,Arial,sans-serif; width: 600px;}
+        /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+           We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+</style>
+<div id="mc_embed_signup">
+    <form action="https://aldeahome.us1.list-manage.com/subscribe/post?u=775d2b62c205b23c8c92138b8&amp;id=fa9eee8080&amp;f_id=0012d3e5f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+        <div id="mc_embed_signup_scroll"><h2>Sign Up Today</h2>
+            <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+            <div class="mc-field-group"><label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value=""></div><div class="mc-field-group"><label for="mce-FNAME">First Name <span class="asterisk">*</span></label><input type="text" name="FNAME" class="required text" id="mce-FNAME" required="" value=""></div><div class="mc-field-group"><label for="mce-LNAME">Last Name <span class="asterisk">*</span></label><input type="text" name="LNAME" class="required text" id="mce-LNAME" required="" value=""></div><div class="mc-field-group"><label for="mce-CELLPHONE">Mobile phone </label><input type="text" name="CELLPHONE" class=" text" id="mce-CELLPHONE" value=""></div><div class="mc-field-group input-group"><strong>SMS notifications </strong><ul><li><input type="radio" name="SMS" id="mce-SMS0" value="I would like to receive text updates"><label for="mce-SMS0">I would like to receive text updates</label></li></ul></div><div class="mc-field-group"><label for="mce-MMERGE12">Your preferred store </label><select name="MMERGE12" class="" id="mce-MMERGE12"><option value=""></option><option value="San Francisco, CA">San Francisco, CA</option><option value="Culver City, CA">Culver City, CA</option><option value="Denver, CO (coming soon)">Denver, CO (coming soon)</option><option value="San Jose, CA (coming soon)">San Jose, CA (coming soon)</option><option value="Seattle, WA (coming soon)">Seattle, WA (coming soon)</option><option value="No preference">No preference</option></select></div><div class="mc-field-group"><label for="mce-AWARENESS">How did you hear about us? </label><select name="AWARENESS" class="" id="mce-AWARENESS"><option value=""></option><option value="In store">In store</option><option value="Friends or family">Friends or family</option><option value="Event">Event</option><option value="Social Media">Social Media</option><option value="Google">Google</option><option value="Media">Media</option><option value="Print advertising">Print advertising</option><option value="Email">Email</option><option value="Other">Other</option></select></div>
+        <div id="mce-responses" class="clear">
+            <div class="response" id="mce-error-response" style="display: none;"></div>
+            <div class="response" id="mce-success-response" style="display: none;"></div>
+        </div><div aria-hidden="true" style="position: absolute; left: -5000px;"><input type="text" name="b_775d2b62c205b23c8c92138b8_fa9eee8080" tabindex="-1" value=""></div><div class="clear"><input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe"></div>
+    </div>
+</form>
+</div>
+<script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script><script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[13]='CELLPHONE';ftypes[13]='text';fnames[15]='SMS';ftypes[15]='radio';fnames[12]='MMERGE12';ftypes[12]='dropdown';fnames[14]='AWARENESS';ftypes[14]='dropdown';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='COMPANY';ftypes[4]='text';fnames[5]='MMERGE5';ftypes[5]='date';fnames[6]='MMERGE6';ftypes[6]='text';fnames[7]='MMERGE7';ftypes[7]='text';fnames[8]='MMERGE8';ftypes[8]='date';fnames[10]='MMERGE10';ftypes[10]='text';fnames[11]='MMERGE11';ftypes[11]='text';fnames[9]='MMERGE9';ftypes[9]='radio';}(jQuery));var $mcj = jQuery.noConflict(true);</script></div>
 <script>
- document.addEventListener("DOMContentLoaded", function () {
-    const shopifyForm = document.querySelector('form[action="/account"]'); // Shopify registration form
+document.addEventListener("DOMContentLoaded", function () {
+    let shopifyForm = document.querySelector("form[action='/account']");
+    let mailchimpForm = document.querySelector("#mc-embedded-subscribe-form");
 
-    if (shopifyForm) {
+    if (shopifyForm && mailchimpForm) {
         shopifyForm.addEventListener("submit", function (event) {
-            event.preventDefault(); // Prevent default form submission
+            event.preventDefault(); // Prevent default Shopify form submission
 
-            // Extract necessary data for Mailchimp form
-            const email = document.getElementById("email").value;
-            const firstName = document.getElementById("first_name").value;
-            const lastName = document.getElementById("last_name").value;
-            const phone = document.getElementById("phone")?.value || "";
-            const storePreference = document.getElementById("store_preference")?.value || "";
-            const awareness = document.getElementById("awareness")?.value || "";
+            // Get Shopify Form Data
+            let email = document.querySelector("input[name='customer[email]']").value;
+            let firstName = document.querySelector("input[name='customer[first_name]']").value;
+            let lastName = document.querySelector("input[name='customer[last_name]']").value;
 
-            // Create a form object for Mailchimp submission
-            const mailchimpData = new FormData();
-            mailchimpData.append("EMAIL", email);
-            mailchimpData.append("FNAME", firstName);
-            mailchimpData.append("LNAME", lastName);
-            mailchimpData.append("CELLPHONE", phone);
-            mailchimpData.append("MMERGE12", storePreference);
-            mailchimpData.append("AWARENESS", awareness);
+            // Auto-Fill Mailchimp Form
+            document.querySelector("#mce-EMAIL").value = email;
+            document.querySelector("#mce-FNAME").value = firstName;
+            document.querySelector("#mce-LNAME").value = lastName;
 
-            // First, send data to Mailchimp
-            fetch("https://aldeahome.us1.list-manage.com/subscribe/post?u=775d2b62c205b23c8c92138b8&id=fa9eee8080", {
-                method: "POST",
-                body: mailchimpData,
-                mode: "no-cors" // Prevent CORS issues
-            }).then(() => {
-                // After Mailchimp data is sent, submit the Shopify form
-                const formData = new FormData(shopifyForm);
-console.log("formData", formData);
-                return fetch('/account', {
-                    method: "POST",
-                    body: formData
-                });
-            }).then(response => {
-                if (response.ok) {
-                  alert(response.ok);
-                    window.location.href = "/account"; // Redirect after successful registration
-                } else {
-                    alert("Registration failed. Please try again.");
-                }
-            }).catch(error => console.error("Error:", error));
+            // Submit Mailchimp Form First
+            mailchimpForm.submit();
+
+            // Delay Shopify Form Submission to Avoid Conflicts
+            setTimeout(function () {
+                shopifyForm.submit();
+            }, 2000); // 2-second delay to allow Mailchimp to process
         });
     }
 });
-
 </script>
 
 
