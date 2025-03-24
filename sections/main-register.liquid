@@ -82,7 +82,7 @@
             event.preventDefault(); // Prevent default form submission
 
             const formData = new FormData(shopifyForm);
-
+console.log("formData", formData);
             fetch('/account', { // Submit Shopify form
                 method: "POST",
                 body: formData
