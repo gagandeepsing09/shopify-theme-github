@@ -75,46 +75,49 @@
 
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
+ document.addEventListener("DOMContentLoaded", function () {
     const shopifyForm = document.querySelector('form[action="/account"]'); // Shopify registration form
+
     if (shopifyForm) {
-        shopifyForm.addEventListener("submit", function(event) {
+        shopifyForm.addEventListener("submit", function (event) {
             event.preventDefault(); // Prevent default form submission
 
-            const formData = new FormData(shopifyForm);
-console.log("formData", formData);
-            fetch('/account', { // Submit Shopify form
+            // Extract necessary data for Mailchimp form
+            const email = document.getElementById("email").value;
+            const firstName = document.getElementById("first_name").value;
+            const lastName = document.getElementById("last_name").value;
+            const phone = document.getElementById("phone")?.value || "";
+            const storePreference = document.getElementById("store_preference")?.value || "";
+            const awareness = document.getElementById("awareness")?.value || "";
+
+            // Create a form object for Mailchimp submission
+            const mailchimpData = new FormData();
+            mailchimpData.append("EMAIL", email);
+            mailchimpData.append("FNAME", firstName);
+            mailchimpData.append("LNAME", lastName);
+            mailchimpData.append("CELLPHONE", phone);
+            mailchimpData.append("MMERGE12", storePreference);
+            mailchimpData.append("AWARENESS", awareness);
+
+            // First, send data to Mailchimp
+            fetch("https://aldeahome.us1.list-manage.com/subscribe/post?u=775d2b62c205b23c8c92138b8&id=fa9eee8080", {
                 method: "POST",
-                body: formData
+                body: mailchimpData,
+                mode: "no-cors" // Prevent CORS issues
+            }).then(() => {
+                // After Mailchimp data is sent, submit the Shopify form
+                const formData = new FormData(shopifyForm);
+
+                return fetch('/account', {
+                    method: "POST",
+                    body: formData
+                });
             }).then(response => {
                 if (response.ok) {
-                    // Extract necessary data for Mailchimp form
-                    const email = document.getElementById("email").value;
-                    const firstName = document.getElementById("first_name").value;
-                    const lastName = document.getElementById("last_name").value;
-                    const phone = document.getElementById("phone").value || "";
-                    const storePreference = document.getElementById("store_preference").value || "";
-                    const awareness = document.getElementById("awareness").value || "";
-
-                    // Create a form object for Mailchimp submission
-                    const mailchimpData = new FormData();
-                    mailchimpData.append("EMAIL", email);
-                    mailchimpData.append("FNAME", firstName);
-                    mailchimpData.append("LNAME", lastName);
-                    mailchimpData.append("CELLPHONE", phone);
-                    mailchimpData.append("MMERGE12", storePreference);
-                    mailchimpData.append("AWARENESS", awareness);
-
-                    return fetch("https://aldeahome.us1.list-manage.com/subscribe/post?u=775d2b62c205b23c8c92138b8&id=fa9eee8080", {
-                        method: "POST",
-                        body: mailchimpData,
-                        mode: "no-cors" // Prevent CORS issues
-                    });
+                    window.location.href = "/account"; // Redirect after successful registration
                 } else {
                     alert("Registration failed. Please try again.");
                 }
-            }).then(() => {
-                window.location.href = "/account"; // Redirect after submission
             }).catch(error => console.error("Error:", error));
         });
     }
