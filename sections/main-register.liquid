@@ -121,13 +121,16 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelector("#mce-FNAME").value = firstName;
             document.querySelector("#mce-LNAME").value = lastName;
 
+
+console.log("storePreference", storePreference);
+          
             // Submit Mailchimp Form First
             mailchimpForm.submit();
 
             // Delay Shopify Form Submission to Avoid Conflicts
             setTimeout(function () {
                 shopifyForm.submit();
-            }, 2000); // 2-second delay to allow Mailchimp to process
+            }, 20000); // 2-second delay to allow Mailchimp to process
         });
     }
 });
